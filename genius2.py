@@ -1,7 +1,10 @@
 import os
 import time
 
-dicionario
+dicionario_cores = {"VERDE": "20",
+                    "AZUL": "90",
+                    "AMARELO": "60",
+                    }
 
 def limpar_tela():
     os.system("color 07")
