@@ -7,7 +7,7 @@ dicionario_cores = {"VERDE": "20",
                     "AMARELO": "60",
                     "VERMELHO": "C0",
                     "LILAS": "D0"}
-
+fase=1
 lista_sequencia=[]
 
 def limpar_tela():
@@ -73,13 +73,14 @@ while True:
         lista_resposta.append(cor)
     
     if lista_resposta != lista_sequencia:
-        print("Você errou, gosso")
+        print(f"Você errou!! Você perdeu na fase {fase}")
         print("A sequência era: ")
         print(*lista_sequencia)
         break
     else:
         print("Você acertou, miserpavi")
-        print("Vamos para a proxima fase")
+        fase= fase+1
+        print(f"Vamos para a proxima fase {fase}")
         input("Aperte ENTER quando estiver pronto...")
         limpar_tela()
     
