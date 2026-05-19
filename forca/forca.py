@@ -124,6 +124,39 @@ def perguntar_letra() -> str:
         resposta = input("Eu disse apenas UMA letra: ").upper()
         return resposta
     
-letra = perguntar_letra()
-print(letra)
+def jogar_forca():
+    #tela inicial do jogo
+    print("""
+          ______________________________
+          XX                          XX
+          XX         FORCA            XX
+          XX ________________________ XX
+          XX                          XX
+          XX     Acerte ou morra!     XX
+          XX ________________________ XX
+             """)
+    
+    input("Aperte ENTER para apostar a sua vida...")
+    limpar()
 
+    #chamar a função escolher_palavra e guardar em uma variavel
+    palavra_escolhida = escolher_palavra()
+
+    #chamar a forca para desenhar a forca 0
+    desenhar_forca(0)
+
+    #chamar a função gerar_tracos e guardar em uma lista (variável)
+    lista_tracos = gerar_tracos(palavra_escolhida)
+    
+    #imprimo a lista de traços
+    print("                  ", *lista_tracos)
+
+    #perguntar a letra e guardar em uma variavel
+    letra_chutada = perguntar_letra()
+
+    if letra_chutada not in palavra_escolhida:
+        erros
+
+
+if __name__ == "__main__":
+    jogar_forca()
