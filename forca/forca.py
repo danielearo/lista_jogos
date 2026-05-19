@@ -167,6 +167,12 @@ def jogar_forca():
         #imprimo a lista de traços
         print("              ", *lista_tracos)
 
+        #verifico se ele ganhou
+        if"_" not in lista_tracos:
+            print("Parabéns!!!")    
+            print("Você sabe bem das coisas!")
+            break
+
         #perguntar a letra e guardar em uma variavel
         letra_chutada = perguntar_letra()
 
@@ -185,7 +191,8 @@ def jogar_forca():
                     lista_tracos[contador] = letra_chutada
                 contador = contador + 1 
 
-            
+
+
 
 
 if __name__ == "__main__":
