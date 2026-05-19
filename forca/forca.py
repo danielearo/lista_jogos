@@ -54,7 +54,7 @@ def desenhar_forca(erro:int):
           |  ( )
           |   |
           |   |
-          |
+          |   |
           |
           """)
     elif erro == 3:
@@ -64,11 +64,22 @@ def desenhar_forca(erro:int):
           |  ( )
           |   |
           |  /|
+          |   |
           |
+          """)
+        
+    elif erro == 4:
+        print (r"""
+          _____
+          |   |
+          |  ( )
+          |   |
+          |  /|\
+          |   |
           |
           """)
    
-    elif erro == 4:
+    elif erro == 5:
         print (r"""
           _____
           |   |
@@ -79,7 +90,7 @@ def desenhar_forca(erro:int):
           |  /
           """)
         
-    elif erro == 5:
+    elif erro == 6:
         print (r"""
           _____
           |   |
@@ -122,7 +133,8 @@ def perguntar_letra() -> str:
     
     while len(resposta) !=1:
         resposta = input("Eu disse apenas UMA letra: ").upper()
-        return resposta
+    
+    return resposta
     
 def jogar_forca():
     #tela inicial do jogo
@@ -137,25 +149,43 @@ def jogar_forca():
              """)
     
     input("Aperte ENTER para apostar a sua vida...")
-    limpar()
+
+    contador_erro = 0 
 
     #chamar a função escolher_palavra e guardar em uma variavel
     palavra_escolhida = escolher_palavra()
 
-    #chamar a forca para desenhar a forca 0
-    desenhar_forca(0)
-
     #chamar a função gerar_tracos e guardar em uma lista (variável)
     lista_tracos = gerar_tracos(palavra_escolhida)
-    
-    #imprimo a lista de traços
-    print("                  ", *lista_tracos)
 
-    #perguntar a letra e guardar em uma variavel
-    letra_chutada = perguntar_letra()
+    while True:
+        limpar()
 
-    if letra_chutada not in palavra_escolhida:
-        erros
+        #chamar a forca para desenhar a forca 0
+        desenhar_forca(contador_erro)
+
+        #imprimo a lista de traços
+        print("              ", *lista_tracos)
+
+        #perguntar a letra e guardar em uma variavel
+        letra_chutada = perguntar_letra()
+
+        if letra_chutada not in palavra_escolhida:
+            contador_erro = contador_erro + 1
+            if contador_erro >= 6:
+                print("Você perdeu!")
+                print(f"A palavra era {palavra_escolhida}")
+                break
+
+        
+        if letra_chutada in palavra_escolhida:
+            contador = 0
+            for letra_palavra in palavra_escolhida:
+                if letra_palavra == letra_chutada:
+                    lista_tracos[contador] = letra_chutada
+                contador = contador + 1 
+
+            
 
 
 if __name__ == "__main__":
